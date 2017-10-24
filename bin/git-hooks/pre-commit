@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -e
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] &&
+  command -v rvm >/dev/null 2>&1 || source "$HOME/.rvm/scripts/rvm"
+
+commited_files=`git diff --cached --name-status | (grep -E "^[AM]" || true) | cut -f2-`
+
+rb_pattern=$(echo -n '\.rb
+\.gemspec
+\.jbuilder
+\.rake
+config\.ru
+Gemfile
+Rakefile' | tr "\\n" '|')
+
+rb_files=`grep -E ".*($rb_pattern)$" <<< "$commited_files" || true`
+if [ -n "$rb_files" ]; then
+  echo "Running rubocop on $(wc -l <<< "$rb_files") files..."
+  bundle exec rubocop $rb_files --force-exclusion # &&
+    # echo 'Running brakeman' &&
+    # bundle exec brakeman -Azq
+fi

@@ -21,3 +21,7 @@
 /yarn-error.log
 
 .byebug_history
+
+# Ignore local db settings and secrets.
+/config/database.yml
+/config/secrets.yml
