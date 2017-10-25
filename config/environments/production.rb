@@ -47,7 +47,8 @@ Rails.application.configure do
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
-  config.log_level = :debug
+  # config.log_level = :debug
+  config.log_level = defined?(Rails::Console) ? :debug : :info
 
   # Prepend all log lines with the following tags.
   config.log_tags = [:request_id]
@@ -63,6 +64,8 @@ Rails.application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :sendmail
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
@@ -74,9 +77,13 @@ Rails.application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
+  # Syslog does not allow to change program_name.
+  SYSLOG_TAG = 'basic_rails_app'.freeze if Rails.env.production?
+
   # Use a different logger for distributed setups.
-  # require 'syslog/logger'
-  # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
+  require 'syslog/logger'
+  syslog_logger = Syslog::Logger.new(SYSLOG_TAG, Syslog::LOG_LOCAL1)
+  config.logger = ActiveSupport::TaggedLogging.new(syslog_logger)
 
   if ENV['RAILS_LOG_TO_STDOUT'].present?
     logger           = ActiveSupport::Logger.new(STDOUT)

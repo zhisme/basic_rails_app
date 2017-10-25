@@ -68,6 +68,13 @@ Rails: {Enabled: true}
 # This methods are useful.
 Rails/SkipsModelValidations: {Enabled: false}
 
+Rails/UnknownEnv:
+  Environments:
+    - development
+    - test
+    - production
+    - staging
+
 Style/Alias: {EnforcedStyle: prefer_alias_method}
 
 # Controllers and helpers does not require to be scoped.
