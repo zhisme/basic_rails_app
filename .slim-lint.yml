@@ -1,0 +1,6 @@
+linters:
+  LineLength:
+    max: 100
+
+exclude:
+  - lib/templates/slim/**/*.slim

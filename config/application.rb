@@ -16,6 +16,8 @@ require 'sprockets/railtie'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 Bundler.require(:assets) if Rails.env.in?(%w[development test])
+# load pry for dev, test & production console
+Bundler.require(:pry) if !Rails.env.production? || defined?(Rails::Console)
 
 module BasicRailsApp
   class Application < Rails::Application

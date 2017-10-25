@@ -22,3 +22,9 @@ if [ -n "$rb_files" ]; then
     # echo 'Running brakeman' &&
     # bundle exec brakeman -Azq
 fi
+
+slim_files=`grep -E "\.slim($|\.)" <<< "$commited_files" || true`
+if [ -n "$slim_files" ]; then
+  echo "Running slim-lint on $(wc -l <<< "$slim_files") files..."
+  bundle exec slim-lint $slim_files
+fi
