@@ -26,3 +26,6 @@
 # Ignore local db settings and secrets.
 /config/database.yml
 /config/secrets.yml
+
+# RSpec tmp
+spec/examples.txt

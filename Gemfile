@@ -53,6 +53,7 @@ group :development do
   # Spring
   gem 'listen', '3.1.5'
   gem 'spring', '2.0.2'
+  gem 'spring-commands-rspec', '1.0.4'
   gem 'spring-watcher-listen', '2.0.1'
 
   # Linters
@@ -69,9 +70,22 @@ group :development do
 end
 
 group :development, :test do
+  # RSpec
+  gem 'rspec-rails', '3.7.1'
+
+  # Spec utils, useful in dev
+  gem 'factory_bot_rails', '4.8.2'
+  gem 'hashie', '3.5.6'
+  gem 'timecop', '0.9.1'
+
   # QA
   gem 'bullet', '5.6.1'
 
   # Can be moved also to production, if libsass is available there.
   gem 'sassc-rails', '1.3.0'
+end
+
+group :test do
+  gem 'rails-controller-testing', '1.0.2'
+  gem 'rspec-its', '1.2.0'
 end
