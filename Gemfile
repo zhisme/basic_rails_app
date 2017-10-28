@@ -15,6 +15,7 @@ gem 'activemodel_translation', '0.2.0', require: 'activemodel_translation/helper
 
 # Controllers
 gem 'has_scope', '0.7.1'
+gem 'remotipart', '1.3.1'
 gem 'responders', '2.4.0'
 gem 'simple_form', '3.5.0'
 
