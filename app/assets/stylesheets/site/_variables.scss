@@ -1,0 +1,10 @@
+@import 'shared/variables';
+
+// Override bootstrap root variables
+
+@import 'bootstrap/functions';
+@import 'bootstrap/variables';
+
+// Override bootstrap computed variables
+
+$navbar-height: $nav-link-height + $navbar-padding-y * 2;

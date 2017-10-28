@@ -1,0 +1,25 @@
+// Placeholder versions of flex utils.
+%flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+%flex-column {
+  display: flex;
+  flex-direction: column;
+
+  > * {
+    flex: none;
+  }
+}
+
+%flex-expandable { flex: 1 1 auto; }
+%flex-column-expandable {
+  @extend %flex-column;
+  @extend %flex-expandable;
+}
+
+.flex-row { @extend %flex-row; }
+.flex-column { @extend %flex-column; }
+.flex-expandable { @extend %flex-expandable; }
+.flex-column-expandable { @extend %flex-column-expandable; }

@@ -1,0 +1,12 @@
+// Default spacing
+.mb { @extend .mb-3; } // scss-lint:disable PlaceholderInExtend
+
+// Carrets
+.caret { @include caret(); }
+.caret-up { @include caret(up); }
+
+// Highlight links in alerts.
+.alert { a { text-decoration: underline; } }
+
+// Align pagination with inline forms.
+.pagination { margin: 0 0 $form-group-margin-bottom; }

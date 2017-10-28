@@ -1,0 +1,36 @@
+// Styles for flash messages.
+.flash-container {
+  position: fixed;
+  z-index: 100;
+  top: $navbar-height + 1rem;
+  right: $grid-gutter-width / 2;
+
+  @include media-breakpoint-down(xs) {
+    left: $grid-gutter-width / 2;
+  }
+
+  &:empty { display: none; }
+
+  $flash-widths: (
+    sm: 9,
+    md: 8,
+    lg: 6,
+    xl: 5,
+  );
+  @each $breakpoint, $cols in $flash-widths {
+    @include media-breakpoint-up($breakpoint) {
+      width: map-get($container-max-widths, $breakpoint) / 12 * $cols;
+    }
+  }
+
+  .alert {
+    @extend .alert-dismissible; // scss-lint:disable PlaceholderInExtend
+    margin: 6px 0 0;
+    opacity: 0.97;
+
+    &:last-child { margin-bottom: 6px; }
+
+    p { margin: 0; }
+    pre { white-space: pre-wrap; }
+  }
+}
