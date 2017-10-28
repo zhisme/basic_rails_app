@@ -24,6 +24,9 @@ gem 'coffee-rails', '4.2.2'
 gem 'slim-rails', '3.1.2'
 gem 'turbolinks', '5.0.1'
 
+# Instrumentation
+gem 'rollbar', '2.15.4'
+
 # Separate group for assets, so we don't load this gems when not using them in production.
 group :assets do
   # Tools
