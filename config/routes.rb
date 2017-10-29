@@ -1,3 +1,9 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  namespace :site, path: '' do
+    resource :about, only: :show do
+      get :ping
+    end
+  end
+
+  root to: 'site/abouts#show'
 end
