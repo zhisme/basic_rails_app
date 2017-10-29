@@ -1,0 +1,11 @@
+exclude:
+- node_modules/*
+
+linters:
+  LeadingZero: {style: include_zero}
+  NestingDepth: {max_depth: 4}
+  PropertySortOrder: {order: smacss}
+  QualifyingElement: {allow_element_with_class: true}
+  # Lets try using it.
+  # SelectorDepth: {enabled: false}
+  SpaceBeforeBrace: {allow_single_line_padding: true}

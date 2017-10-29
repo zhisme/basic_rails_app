@@ -28,3 +28,9 @@ if [ -n "$slim_files" ]; then
   echo "Running slim-lint on $(wc -l <<< "$slim_files") files..."
   bundle exec slim-lint $slim_files
 fi
+
+scss_files=`grep -E "\.scss($|\.)" <<< "$commited_files" || true`
+if [ -n "$scss_files" ]; then
+  echo "Running scss-lint on $(wc -l <<< "$scss_files") files..."
+  bundle exec scss-lint $scss_files
+fi

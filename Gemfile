@@ -58,6 +58,7 @@ group :development do
   # Linters
   gem 'brakeman', '4.0.1', require: false
   gem 'rubocop', '0.51.0', require: false
+  gem 'scss_lint', '0.55.0', github: 'printercu/scss-lint', ref: 'ca1dcf9', require: false
   gem 'slim_lint', '0.15.0', require: false
 
   # Dependency management
