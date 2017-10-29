@@ -1,0 +1,3 @@
+var new_form = $.findAndReplace("<%= j render(partial: 'form', formats: [:html]) %>")
+$.turbo.onLoad()
+new_form.scrollToError()

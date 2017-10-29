@@ -1,0 +1,4 @@
+$.message(<%= safe_json([
+  style: 'alert-danger',
+  content: resource.errors.full_messages.join("\n")
+]) %>)
