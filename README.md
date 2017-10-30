@@ -1,24 +1,32 @@
-# README
+# BasicRailsApp
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup
 
-Things you may want to cover:
+### Install requirements
 
-* Ruby version
+- PostgreSQL 9.6
+- ruby from `.ruby-version`
+- [NodeJS](https://nodejs.org/en/download/package-manager/)
+- [Yarn](https://yarnpkg.com/en/docs/install)
+- `gifsicle`, `optipng`, `jpegoptim` to optimize images while `assets:precompile`.
 
-* System dependencies
+### App
 
-* Configuration
+- Clone repo.
+- _Optionally._ `bin/copy_samples` and edit `database.yml`.
+- Run `bin/setup`.
 
-* Database creation
+## Development
 
-* Database initialization
+- Follow rubocop advices.
+- Write simple code, which is easy to support.
+- Prefer TDD:
 
-* How to run the test suite
+  - Write request spec for every path from routes.
+  - Write additional request specs for branches in templates.
+  - Use RSpec helpers and idioms (`its`, `described_class`, `subject { -> {} }`, etc.).
 
-* Services (job queues, cache servers, search engines, etc.)
+### Assets
 
-* Deployment instructions
-
-* ...
+Use Yarn for external js libs. Provide yarn on app server as it fetches dependencies
+on `assets:precompile`.
