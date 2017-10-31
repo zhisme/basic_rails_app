@@ -12,6 +12,7 @@ gem 'puma', '3.10.0'
 
 # Models
 gem 'activemodel_translation', '0.2.0', require: 'activemodel_translation/helper'
+gem 'kaminari', '1.1.1'
 
 # Controllers
 gem 'has_scope', '0.7.1'

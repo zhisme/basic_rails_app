@@ -1,0 +1,27 @@
+/ Bootstrap look for kaminari
+= paginator.render do
+  ul.pagination
+    - was_gap = 0
+    - kaminari_helper = Kaminari::Helpers::Tag.new(@template, @options)
+    - each_page do |page|
+      ruby:
+        if page.left_outer? || page.right_outer? || page.inside_window?
+          rel = 'next' if page.next?
+          rel = 'prev' if page.prev?
+          text = page
+        else
+          was_gap += 1
+          next if (was_gap == 1 && !page.single_gap?) || was_gap == 4
+          text = '&hellip;'.html_safe # rubocop:disable OutputSafety
+          title = page
+        end
+        is_current = page.current?
+        was_gap = 2 if is_current
+        url = kaminari_helper.page_url_for(page)
+
+      li.page-item class="#{'active' if is_current}"
+        = link_to text, is_current ? '#' : url,
+          remote: remote,
+          rel: rel,
+          title: title,
+          class: 'page-link'
