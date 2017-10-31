@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   self.responder = Responders::Basic
   include Responders::Basic::ControllerHelpers
 
+  include ErrorResponses
   include SafeReferer
 
   protect_from_forgery with: :exception
