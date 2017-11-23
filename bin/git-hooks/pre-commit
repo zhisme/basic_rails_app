@@ -34,3 +34,9 @@ if [ -n "$scss_files" ]; then
   echo "Running scss-lint on $(wc -l <<< "$scss_files") files..."
   bundle exec scss-lint $scss_files
 fi
+
+coffee_files=`grep -E "\.coffee($|\.)" <<< "$commited_files" || true`
+if [ -n "$coffee_files" ]; then
+  echo "Running coffee-lint on $(wc -l <<< "$coffee_files") files..."
+  yarn run -s coffeelint -- -q $coffee_files
+fi
