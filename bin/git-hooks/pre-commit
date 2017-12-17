@@ -1,5 +1,4 @@
 #!/bin/bash
-
 set -e
 
 commited_files=`git diff --cached --name-status | (grep -E "^[AM]" || true) | cut -f2-`
@@ -19,6 +18,9 @@ if [ -n "$rb_files" ]; then
     echo 'Running brakeman' &&
     bundle exec brakeman -Azq
 fi
+
+echo 'Running rspec'
+bundle exec ruby ./bin/git-hooks/rspec-pre-commit.rb
 
 slim_files=`grep -E "\.slim($|\.)" <<< "$commited_files" || true`
 if [ -n "$slim_files" ]; then

@@ -6,6 +6,7 @@ AllCops:
   - vendor/assets/bower_components/**/*
   - tmp/**/*
   - config/puma/capistrano.rb
+  - bin/git-hooks/rspec-pre-commit.rb
 
 # Disable, till rubocop supports combination of styles.
 # Use one of this styles where appropriate, keep it clean, compact and readable.
