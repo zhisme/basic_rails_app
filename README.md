@@ -8,7 +8,6 @@
 - ruby from `.ruby-version`
 - [NodeJS](https://nodejs.org/en/download/package-manager/)
 - [Yarn](https://yarnpkg.com/en/docs/install)
-- `gifsicle`, `optipng`, `jpegoptim` to optimize images while `assets:precompile`.
 
 ### App
 
