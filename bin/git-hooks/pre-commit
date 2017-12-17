@@ -2,9 +2,6 @@
 
 set -e
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] &&
-  command -v rvm >/dev/null 2>&1 || source "$HOME/.rvm/scripts/rvm"
-
 commited_files=`git diff --cached --name-status | (grep -E "^[AM]" || true) | cut -f2-`
 
 rb_pattern=$(echo -n '\.rb
@@ -19,8 +16,8 @@ rb_files=`grep -E ".*($rb_pattern)$" <<< "$commited_files" || true`
 if [ -n "$rb_files" ]; then
   echo "Running rubocop on $(wc -l <<< "$rb_files") files..."
   bundle exec rubocop $rb_files --force-exclusion # &&
-    # echo 'Running brakeman' &&
-    # bundle exec brakeman -Azq
+    echo 'Running brakeman' &&
+    bundle exec brakeman -Azq
 fi
 
 slim_files=`grep -E "\.slim($|\.)" <<< "$commited_files" || true`
@@ -33,10 +30,4 @@ scss_files=`grep -E "\.scss($|\.)" <<< "$commited_files" || true`
 if [ -n "$scss_files" ]; then
   echo "Running scss-lint on $(wc -l <<< "$scss_files") files..."
   bundle exec scss-lint $scss_files
-fi
-
-coffee_files=`grep -E "\.coffee($|\.)" <<< "$commited_files" || true`
-if [ -n "$coffee_files" ]; then
-  echo "Running coffee-lint on $(wc -l <<< "$coffee_files") files..."
-  yarn run -s coffeelint -- -q $coffee_files
 fi

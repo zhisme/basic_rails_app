@@ -1,7 +1,5 @@
 module ApplicationHelper
-  include RailsStuff::Helpers::Bootstrap
-  include RailsStuff::Helpers::Translation
-
+  include BootstrapHelper
   # Adds pagination before and after output of block.
   def paginate(target = collection, *args, &block)
     pagination = super
