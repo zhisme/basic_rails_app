@@ -8,6 +8,11 @@ AllCops:
   - config/puma/capistrano.rb
   - bin/git-hooks/rspec-pre-commit.rb
 
+# Use puts safely in db/seeds.
+Rails/Output:
+  Exclude:
+  - db/seeds.rb
+
 # Disable, till rubocop supports combination of styles.
 # Use one of this styles where appropriate, keep it clean, compact and readable.
 Layout/AlignParameters:
